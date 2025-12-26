@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-21 12:03:43.012395",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "area_location",
+  "pest_noticed",
+  "pest_count",
+  "activity_level"
+ ],
+ "fields": [
+  {
+   "fieldname": "area_location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Area/Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pest_noticed",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Pest Noticed",
+   "options": "Cockroach\nRodents\nAnts\nFlies\nMosquitoes\nTermites\nBed Bugs\nOthers",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pest_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Pest Count"
+  },
+  {
+   "fieldname": "activity_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Activity Level",
+   "options": "Low\nMedium\nHigh",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-21 12:15:57.884266",
+ "modified_by": "Administrator",
+ "module": "Pest Control",
+ "name": "Pest Trend Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

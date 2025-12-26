@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-21 13:36:14.724230",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "recommendation",
+  "category",
+  "priority",
+  "status",
+  "column_break_efyg",
+  "first_noted_on",
+  "closed_on",
+  "section_break_kejo",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "description": "Issue description",
+   "fieldname": "recommendation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Recommendation",
+   "reqd": 1
+  },
+  {
+   "description": "Type of issue",
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Category",
+   "options": "Housekeeping\nStructural\nFood Handling\nWaste Management\nDrainage"
+  },
+  {
+   "description": "Severity",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Open\nClosed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_efyg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "first_noted_on",
+   "fieldtype": "Date",
+   "label": "First Noted On",
+   "options": "Today"
+  },
+  {
+   "fieldname": "closed_on",
+   "fieldtype": "Date",
+   "label": "Closed On"
+  },
+  {
+   "fieldname": "section_break_kejo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-21 13:39:36.759185",
+ "modified_by": "Administrator",
+ "module": "Pest Control",
+ "name": "Specific Recommendations",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

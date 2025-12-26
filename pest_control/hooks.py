@@ -2,7 +2,7 @@ app_name = "pest_control"
 app_title = "Pest Control"
 app_publisher = "Meghwin Dave"
 app_description = "Pest Control"
-app_email = "meghwindave@gmail.com"
+app_email = "meghwindave04@gmail.com"
 app_license = "mit"
 
 # Apps
@@ -137,13 +137,22 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Sales Order": {
+		"on_submit": "pest_control.pest_control.doc_events.sales_order.on_submit",
+
+	},
+	"Maintenance Visit":{
+		"on_submit":"pest_control.pest_control.doc_events.maintenance_visit.on_submit",}
+}
+
+fixtures = [{
+    "doctype": "Custom Field",
+        "filters": {
+            "module": [ "in", ["Pest Control"] ]
+            }
+        },
+    ]
 
 # Scheduled Tasks
 # ---------------
