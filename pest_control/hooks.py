@@ -143,16 +143,24 @@ doc_events = {
 
 	},
 	"Maintenance Visit":{
-		"on_submit":"pest_control.pest_control.doc_events.maintenance_visit.on_submit",}
+		"on_submit":"pest_control.pest_control.doc_events.maintenance_visit.on_submit",
+		"onload":"pest_control.pest_control.doc_events.maintenance_visit.onload",}
 }
 
-fixtures = [{
-    "doctype": "Custom Field",
+fixtures = [
+    {
+        "doctype": "Custom Field",
         "filters": {
             "module": [ "in", ["Pest Control"] ]
-            }
-        },
-    ]
+        }
+    },
+    {
+        "doctype": "Role",
+        "filters": {
+            "name": ["in", ["Technician", "Technical Inspector", "Operations Manager", "Technical Manager"]]
+        }
+    },
+]
 
 # Scheduled Tasks
 # ---------------
