@@ -1,8 +1,19 @@
 import frappe
+from datetime import timedelta
 
 def on_submit(self, method):
     if self.custom_sale_type == "Contract":
         stock_setting = frappe.get_doc("Stock Settings")
+        
+        # Calculate number of visits based on Service Frequency
+        frequency_days = {
+            "Weekly": 7,
+            "Monthly": 30,
+            "Quarterly": 91,
+            "Annually": 365,
+            "One-Time": None
+        }
+        
         # -------------------------------
         # Create Maintenance Schedule
         # -------------------------------
@@ -17,13 +28,44 @@ def on_submit(self, method):
             schedule_item.item_name = item.item_name
             schedule_item.start_date = self.custom_contract_start_date
             schedule_item.end_date = self.custom_contract_end_date
-            schedule_item.no_of_visits = 1   # keep numeric, derive later if needed
+            
+            # Calculate number of visits based on Service Frequency
+            if self.custom_service_frequency and self.custom_service_frequency != "One-Time":
+                days = frequency_days.get(self.custom_service_frequency, 30)
+                if days:
+                    total_days = (self.custom_contract_end_date - self.custom_contract_start_date).days
+                    no_of_visits = max(1, (total_days // days) + 1)  # +1 to include start date
+                    schedule_item.no_of_visits = no_of_visits
+                else:
+                    schedule_item.no_of_visits = 1
+            else:
+                schedule_item.no_of_visits = 1
+            
             schedule_item.sales_order = self.name
 
-            schedule_date = maintenance_schedule.append("schedules")
-            schedule_date.item_code = item.item_code
-            schedule_date.item_name = item.item_name
-            schedule_date.scheduled_date = self.delivery_date or self.custom_contract_start_date
+            # Generate schedule dates based on frequency
+            if self.custom_service_frequency and self.custom_service_frequency != "One-Time":
+                days = frequency_days.get(self.custom_service_frequency, 30)
+                if days:
+                    current_date = self.custom_contract_start_date
+                    while current_date <= self.custom_contract_end_date:
+                        schedule_date = maintenance_schedule.append("schedules")
+                        schedule_date.item_code = item.item_code
+                        schedule_date.item_name = item.item_name
+                        schedule_date.scheduled_date = current_date
+                        current_date = current_date + timedelta(days=days)
+                else:
+                    # One-Time or fallback
+                    schedule_date = maintenance_schedule.append("schedules")
+                    schedule_date.item_code = item.item_code
+                    schedule_date.item_name = item.item_name
+                    schedule_date.scheduled_date = self.delivery_date or self.custom_contract_start_date
+            else:
+                # One-Time or no frequency specified
+                schedule_date = maintenance_schedule.append("schedules")
+                schedule_date.item_code = item.item_code
+                schedule_date.item_name = item.item_name
+                schedule_date.scheduled_date = self.delivery_date or self.custom_contract_start_date
 
         maintenance_schedule.insert(ignore_mandatory=True)
 

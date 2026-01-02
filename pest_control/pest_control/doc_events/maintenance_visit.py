@@ -23,7 +23,7 @@ def on_submit(self, method=None):
             stock_item.t_warehouse = stock_setting.custom_to_warehouse
             stock_item.item_code = row.item
             stock_item.qty = row.quantity
-        
+            
         stock_entry.custom_maintenance_visit = self.name
         stock_entry.insert(ignore_permissions=True)
         frappe.msgprint(
@@ -50,10 +50,13 @@ def on_submit(self, method=None):
                 })
 
         if demobilize_items:
-            # Get Main Store warehouse (assuming it's the default warehouse or from settings)
-            main_store = frappe.db.get_value("Warehouse", {"is_group": 0}, "name")
+            # Get Main Store warehouse from Stock Settings
+            main_store = stock_setting.custom_main_store_warehouse
             if not main_store:
-                frappe.throw("Please set up Main Store warehouse")
+                # Fallback: Try to find warehouse named "Main Store"
+                main_store = frappe.db.get_value("Warehouse", {"warehouse_name": "Main Store", "is_group": 0}, "name")
+                if not main_store:
+                    frappe.throw("Please set Main Store Warehouse in Stock Settings")
 
             stock_entry_transfer = frappe.new_doc("Stock Entry")
             stock_entry_transfer.stock_entry_type = "Material Transfer"

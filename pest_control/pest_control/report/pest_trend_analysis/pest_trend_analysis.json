@@ -4,6 +4,38 @@
  "disabled": 0,
  "docstatus": 0,
  "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "mandatory": 0,
+   "options": "Customer",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "premise_address",
+   "fieldtype": "Link",
+   "label": "Premise Address",
+   "mandatory": 0,
+   "options": "Address",
+   "wildcard_filter": 0
+  }
+ ],
  "idx": 0,
  "is_standard": "Yes",
  "modified": "2025-12-21 20:00:00.000000",
@@ -11,7 +43,7 @@
  "module": "Pest Control",
  "name": "Pest Trend Analysis",
  "owner": "Administrator",
- "query": "SELECT \n    mv.customer as 'Customer',\n    mv.customer_address as 'Premise Address',\n    ptd.area_location as 'Area/Location',\n    ptd.pest_noticed as 'Pest Noticed',\n    SUM(ptd.pest_count) as 'Total Count',\n    COUNT(*) as 'Occurrences',\n    MAX(ptd.activity_level) as 'Max Activity Level',\n    mv.mntc_date as 'Visit Date'\nFROM \n    `tabMaintenance Visit` mv\n    INNER JOIN `tabPest Trend Detail` ptd ON ptd.parent = mv.name\nWHERE \n    mv.docstatus = 1\n    AND mv.mntc_date BETWEEN %(from_date)s AND %(to_date)s\n    {customer_filter}\n    {premise_filter}\nGROUP BY \n    mv.customer, mv.customer_address, ptd.area_location, ptd.pest_noticed\nORDER BY \n    ptd.pest_noticed, SUM(ptd.pest_count) DESC",
+ "query": "SELECT \n    mv.customer as 'Customer',\n    mv.customer_address as 'Premise Address',\n    ptd.area_location as 'Area/Location',\n    ptd.pest_noticed as 'Pest Noticed',\n    SUM(COALESCE(ptd.pest_count, 0)) as 'Total Count',\n    COUNT(*) as 'Occurrences',\n    MAX(ptd.activity_level) as 'Max Activity Level',\n    mv.mntc_date as 'Visit Date'\nFROM \n    `tabMaintenance Visit` mv\n    INNER JOIN `tabPest Trend Detail` ptd ON ptd.parent = mv.name\nWHERE \n    mv.docstatus = 1\n    AND mv.mntc_date BETWEEN %(from_date)s AND %(to_date)s\n    AND (%(customer)s IS NULL OR mv.customer = %(customer)s)\n    AND (%(premise_address)s IS NULL OR mv.customer_address = %(premise_address)s)\nGROUP BY \n    mv.customer, mv.customer_address, ptd.area_location, ptd.pest_noticed, mv.mntc_date\nORDER BY \n    ptd.pest_noticed, SUM(COALESCE(ptd.pest_count, 0)) DESC",
  "ref_doctype": "Maintenance Visit",
  "report_name": "Pest Trend Analysis",
  "report_type": "Query Report",
@@ -27,4 +59,3 @@
   }
  ]
 }
-

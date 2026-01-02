@@ -43,10 +43,13 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+	"Sales Order": "pest_control/public/js/pest_control/sales_order.js",
+	"Customer": "pest_control/public/js/pest_control/customer.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
-# doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+# doctype_calendar_js = {"doctype" : "public/js/doctype_tree.js"}
 
 # Svg Icons
 # ------------------
@@ -140,27 +143,30 @@ app_license = "mit"
 doc_events = {
 	"Sales Order": {
 		"on_submit": "pest_control.pest_control.doc_events.sales_order.on_submit",
-
 	},
-	"Maintenance Visit":{
-		"on_submit":"pest_control.pest_control.doc_events.maintenance_visit.on_submit",
-		"onload":"pest_control.pest_control.doc_events.maintenance_visit.onload",}
+	"Maintenance Visit": {
+		"on_submit": "pest_control.pest_control.doc_events.maintenance_visit.on_submit",
+		"onload": "pest_control.pest_control.doc_events.maintenance_visit.onload",
+	},
+	"Item": {
+		"validate": "pest_control.pest_control.doc_events.item.validate",
+	}
 }
 
 fixtures = [
     {
-        "doctype": "Custom Field",
+    "doctype": "Custom Field",
         "filters": {
             "module": [ "in", ["Pest Control"] ]
-        }
-    },
+            }
+        },
     {
         "doctype": "Role",
         "filters": {
             "name": ["in", ["Technician", "Technical Inspector", "Operations Manager", "Technical Manager"]]
         }
     },
-]
+    ]
 
 # Scheduled Tasks
 # ---------------
