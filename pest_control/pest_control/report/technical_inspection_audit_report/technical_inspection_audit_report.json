@@ -1,0 +1,59 @@
+{
+ "add_total_row": 0,
+ "creation": "2025-12-21 20:00:00.000000",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "mandatory": 0,
+   "options": "Customer",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "mandatory": 0,
+   "options": "\nScheduled\nCancelled\nCompleted",
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2025-12-21 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Pest Control",
+ "name": "Technical Inspection Audit Report",
+ "owner": "Administrator",
+ "query": "SELECT \n    mv.name as 'Visit ID',\n    mv.mntc_date as 'Visit Date',\n    mv.customer as 'Customer',\n    mv.customer_address as 'Premise Address',\n    mv.contact_person as 'Contact Person',\n    mv.status as 'Status',\n    mv.custom_time_in as 'Time In',\n    mv.custom_timeout as 'Time Out',\n    mv.custom_general_recommendations_followed as 'General Rec. Followed',\n    COUNT(DISTINCT ptd.name) as 'Pest Trend Entries',\n    COUNT(DISTINCT cu.name) as 'Chemicals Used Count',\n    COUNT(DISTINCT ea.name) as 'Equipment Actions Count',\n    COUNT(DISTINCT sr.name) as 'Recommendations Count',\n    CASE \n        WHEN COUNT(DISTINCT CASE WHEN ptd.activity_level = 'High' THEN ptd.name END) > 0 THEN 'High'\n        WHEN COUNT(DISTINCT CASE WHEN ptd.activity_level = 'Medium' THEN ptd.name END) > 0 THEN 'Medium'\n        WHEN COUNT(DISTINCT CASE WHEN ptd.activity_level = 'Low' THEN ptd.name END) > 0 THEN 'Low'\n        ELSE 'None'\n    END as 'Highest Activity Level',\n    mv.completion_status as 'Completion Status',\n    mv.maintenance_type as 'Maintenance Type'\nFROM \n    `tabMaintenance Visit` mv\n    LEFT JOIN `tabPest Trend Detail` ptd ON ptd.parent = mv.name\n    LEFT JOIN `tabChemicals Used` cu ON cu.parent = mv.name\n    LEFT JOIN `tabEquipment Action` ea ON ea.parent = mv.name\n    LEFT JOIN `tabSpecific Recommendations` sr ON sr.parent = mv.name\nWHERE \n    mv.docstatus = 1\n    AND (%(from_date)s IS NULL OR mv.mntc_date >= %(from_date)s)\n    AND (%(to_date)s IS NULL OR mv.mntc_date <= %(to_date)s)\n    AND (%(customer)s IS NULL OR mv.customer = %(customer)s)\n    AND (%(status)s IS NULL OR mv.status = %(status)s)\nGROUP BY \n    mv.name, mv.mntc_date, mv.customer, mv.customer_address, mv.contact_person, \n    mv.status, mv.custom_time_in, mv.custom_timeout, mv.custom_general_recommendations_followed,\n    mv.completion_status, mv.maintenance_type\nORDER BY \n    mv.mntc_date DESC, mv.customer",
+ "ref_doctype": "Maintenance Visit",
+ "report_name": "Technical Inspection Audit Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Technical Inspector"
+  }
+ ]
+}
+
