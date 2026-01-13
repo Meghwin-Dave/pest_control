@@ -35,10 +35,9 @@
  "module": "Pest Control",
  "name": "Chemical Consumption Report",
  "owner": "Administrator",
- "query": "SELECT \n    DATE(se.posting_date) as 'Date',\n    sei.item_code as 'Chemical Item',\n    sei.item_name as 'Item Name',\n    SUM(sei.qty) as 'Total Quantity Consumed',\n    sei.uom as 'UOM',\n    COUNT(DISTINCT se.custom_maintenance_visit) as 'Number of Visits'\nFROM \n    `tabStock Entry` se\n    INNER JOIN `tabStock Entry Detail` sei ON sei.parent = se.name\nWHERE \n    se.docstatus = 1\n    AND se.stock_entry_type = 'Material Issue'\n    AND se.posting_date BETWEEN %(from_date)s AND %(to_date)s\n    AND (%(item_code)s IS NULL OR sei.item_code = %(item_code)s)\nGROUP BY \n    DATE(se.posting_date), sei.item_code, sei.uom\nORDER BY \n    DATE(se.posting_date) DESC, sei.item_code",
  "ref_doctype": "Stock Entry",
  "report_name": "Chemical Consumption Report",
- "report_type": "Query Report",
+ "report_type": "Script Report",
  "roles": [
   {
    "role": "System Manager"

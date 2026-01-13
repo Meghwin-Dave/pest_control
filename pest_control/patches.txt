@@ -6,3 +6,5 @@ pest_control.patches.v1_0_0.fix_sales_order_int_fields
 
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
+
+pest_control.patches.v1_0_1.update_reports_to_script_type
