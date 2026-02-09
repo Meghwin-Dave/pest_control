@@ -1,0 +1,83 @@
+{% from "pest_control/www/layout.html" import render_page %}
+
+{% call render_page("Contact Arbiter Pest Control | Dubai, UAE", active="contact") %}
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-section bg-light-premium">
+        <div class="container-fluid px-5">
+            <div class="contact-layout">
+                <div>
+                    <div class="section-header mb-3">
+                        <span class="section-label">Get In Touch</span>
+                        <h2 class="section-title">Speak with a Pest Control Specialist.</h2>
+                    </div>
+                    <p class="mb-4">Share a few details about your property and concerns. We’ll respond with clear next steps and an appropriate service recommendation.</p>
+                    <div class="grid-auto grid-auto-2 mb-3">
+                        <div class="content-card">
+                            <div class="icon-badge"><i class="fas fa-phone"></i></div>
+                            <h3 class="h6 mb-2">Phone</h3>
+                            <p class="mb-1"><a href="tel:+971542148006" class="contact-link">+971 54 214 8006</a></p>
+                            <small class="text-muted">24/7 for urgent pest issues</small>
+                        </div>
+                        <div class="content-card">
+                            <div class="icon-badge"><i class="fas fa-envelope"></i></div>
+                            <h3 class="h6 mb-2">Email</h3>
+                            <p class="mb-1"><a href="mailto:sales@arbiterpest.com" class="contact-link">sales@arbiterpest.com</a></p>
+                            <small class="text-muted">Replies within one business day</small>
+                        </div>
+                    </div>
+                    <ul class="contact-details-list">
+                        <li><i class="fas fa-map-marker-alt"></i><span>Dubai, United Arab Emirates</span></li>
+                        <li><i class="fas fa-clock"></i><span>Standard Service Hours: 9:00 AM – 6:00 PM (Sun–Thu)</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="contact-form-wrapper">
+                        <h4 class="mb-3">Request a Site Visit or Quotation</h4>
+                        <p class="text-muted mb-3">Provide basic details and we’ll follow up with recommendations tailored to your property.</p>
+                        <form id="contactForm" class="contact-form">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="service" class="form-label">Service Interested In</label>
+                                    <select class="form-select" id="service" name="service" required>
+                                        <option value="">Select a service...</option>
+                                        <option value="general">General Pest Control</option>
+                                        <option value="rodent">Rodent Control</option>
+                                        <option value="termite">Termite Control</option>
+                                        <option value="bird">Bird Control</option>
+                                        <option value="agricultural">Agricultural Pest Control</option>
+                                        <option value="cleaning">Cleaning &amp; Disinfection</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Property Details &amp; Concerns</label>
+                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Briefly describe your property type, size and the issues you are facing..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary-premium w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Send Request
+                            </button>
+                        </form>
+                        <div id="formMessage" class="mt-4" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endcall %}
+

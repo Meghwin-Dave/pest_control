@@ -1,0 +1,5 @@
+/* Aggregated stylesheet for Arbiter Pest Control website.
+   Delegates to the main theme file `style.css` to satisfy the
+   required filename constraint (index.html, styles.css, script.js). */
+@import url("style.css");
+

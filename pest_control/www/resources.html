@@ -1,0 +1,60 @@
+{% from "pest_control/www/layout.html" import render_page %}
+
+{% call render_page("Pest Guide & Resources | Arbiter UAE", active="resources") %}
+
+    <!-- Pest Guide -->
+    <section id="pest-guide" class="page-section">
+        <div class="container-fluid px-5">
+            <div class="section-header mb-4">
+                <span class="section-label">Resources</span>
+                <h2 class="section-title">Pest Guide.</h2>
+                <p class="section-subtitle">Understand how key pests behave, why they appear and which treatment strategies work best.</p>
+            </div>
+            <div class="grid-auto grid-auto-3">
+                <div class="content-card" id="pest-guide-bed-bugs">
+                    <div class="highlight-tag mb-2"><i class="fas fa-bed"></i><span>Bed Bugs</span></div>
+                    <p class="mb-2">Nocturnal pests that hide in seams, cracks and furniture. Often spread through luggage, soft furnishings and shared spaces.</p>
+                    <a href="services#bed-bug-treatment" class="service-link">View treatment approach <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+                <div class="content-card" id="pest-guide-cockroaches">
+                    <div class="highlight-tag mb-2"><i class="fas fa-bug"></i><span>Cockroaches</span></div>
+                    <p class="mb-2">Common in warm, humid environments and an indicator of hygiene or structural gaps around food and waste areas.</p>
+                    <a href="services#cockroach-treatment" class="service-link">View treatment approach <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+                <div class="content-card" id="pest-guide-rodents">
+                    <div class="highlight-tag mb-2"><i class="fas fa-rat"></i><span>Rodents</span></div>
+                    <p class="mb-2">Capable of causing serious structural and stock damage, particularly around warehouses, loading bays and service yards.</p>
+                    <a href="services#rodent-control" class="service-link">View treatment approach <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog / Insights -->
+    <section id="blog" class="page-section bg-light-premium">
+        <div class="container-fluid px-5">
+            <div class="section-header mb-4">
+                <span class="section-label">Resources</span>
+                <h2 class="section-title">Insights &amp; Updates.</h2>
+                <p class="section-subtitle">Curated articles to help facility managers, property owners and operators make better decisions about pest control and hygiene.</p>
+            </div>
+            <div class="grid-auto grid-auto-3">
+                <div class="content-card">
+                    <h3 class="h5 mb-2">Designing an Audit-Ready Pest Control Program</h3>
+                    <p class="mb-2">What auditors look for, how to standardise documentation and how to turn pest control visits into measurable KPIs.</p>
+                    <a href="contact#contact" class="service-link">Talk to our consultants <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+                <div class="content-card">
+                    <h3 class="h5 mb-2">The Role of Cleaning in Effective Pest Management</h3>
+                    <p class="mb-2">Why pest control and cleaning must work together – especially in kitchens, hospitality and high-traffic facilities.</p>
+                </div>
+                <div class="content-card">
+                    <h3 class="h5 mb-2">Choosing Between Reactive &amp; Preventive Contracts</h3>
+                    <p class="mb-2">When a one-time treatment is enough, and when a longer-term contract protects your brand and budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endcall %}
+

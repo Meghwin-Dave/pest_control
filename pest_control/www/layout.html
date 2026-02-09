@@ -1,0 +1,257 @@
+{% macro render_page(title, active='home') %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar with Mega Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-premium">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand fw-bold" href="index">
+                <span class="brand-icon"><i class="fas fa-shield-alt"></i></span>ARBITER
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active == 'home' else '' }}" href="index">Home</a>
+                    </li>
+
+                    <!-- About mega -->
+                    <li class="nav-item has-mega">
+                        <a class="nav-link mega-toggle {{ 'active' if active == 'about' else '' }}" href="about">
+                            About <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-inner">
+                                <div class="mega-column">
+                                    <div class="mega-title">About</div>
+                                    <ul class="mega-list">
+                                        <li><a href="about#about-us"><span>About Us</span></a></li>
+                                        <li><a href="about#certifications"><span>Certifications &amp; Licenses</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <div class="mega-title">Locations</div>
+                                    <ul class="mega-list">
+                                        <li><a href="about#abu-dhabi"><span>Abu Dhabi</span></a></li>
+                                        <li><a href="about#dubai"><span>Dubai</span></a></li>
+                                        <li><a href="about#sharjah"><span>Sharjah</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Services mega -->
+                    <li class="nav-item has-mega">
+                        <a class="nav-link mega-toggle {{ 'active' if active == 'services' else '' }}" href="services">
+                            Services <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-inner">
+                                <div class="mega-column">
+                                    <div class="mega-title">Core Services</div>
+                                    <ul class="mega-list">
+                                        <li><a href="services#pest-control-services"><span>Pest Control Services</span></a></li>
+                                        <li><a href="services#pest-categories"><span>Pest Categories</span></a></li>
+                                        <li><a href="services#specialized-services"><span>Specialized Services</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <div class="mega-title">Treatments &amp; Industries</div>
+                                    <ul class="mega-list">
+                                        <li><a href="services#treatments"><span>Treatments</span></a></li>
+                                        <li><a href="services#industries-we-serve"><span>Industries We Serve</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <div class="mega-title">Highlighted</div>
+                                    <ul class="mega-list">
+                                        <li><a href="services#green-pest-control"><span>Green Pest Control</span></a></li>
+                                        <li><a href="services#consultancy-services"><span>Consultancy Services</span></a></li>
+                                        <li><a href="services#fumigation-services"><span>Fumigation Services</span></a></li>
+                                        <li><a href="services#ship-vessel-pest-control"><span>Ship &amp; Vessel Pest Control</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Resources mega -->
+                    <li class="nav-item has-mega">
+                        <a class="nav-link mega-toggle {{ 'active' if active == 'resources' else '' }}" href="resources">
+                            Resources <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-inner">
+                                <div class="mega-column">
+                                    <div class="mega-title">Knowledge</div>
+                                    <ul class="mega-list">
+                                        <li><a href="resources#pest-guide"><span>Pest Guide</span></a></li>
+                                        <li><a href="resources#blog"><span>Blog</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <div class="mega-title">Popular Topics</div>
+                                    <ul class="mega-list">
+                                        <li><a href="resources#pest-guide-bed-bugs"><span>Bed Bugs</span></a></li>
+                                        <li><a href="resources#pest-guide-cockroaches"><span>Cockroaches</span></a></li>
+                                        <li><a href="resources#pest-guide-rodents"><span>Rodents</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Contact mega -->
+                    <li class="nav-item has-mega">
+                        <a class="nav-link mega-toggle {{ 'active' if active == 'contact' else '' }}" href="contact">
+                            Contact <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-inner">
+                                <div class="mega-column">
+                                    <div class="mega-title">Get in Touch</div>
+                                    <ul class="mega-list">
+                                        <li><a href="contact#contact"><span>Contact Us</span></a></li>
+                                    </ul>
+                                    <div class="mega-cta">
+                                        <a href="https://portal.example.com" target="_blank" rel="noopener" class="btn-nav-portal">
+                                            <i class="fas fa-arrow-up-right-from-square me-1"></i> Customer Portal
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {{ caller() }}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid px-5 py-5">
+            <div class="row g-5 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="footer-title mb-3">About Arbiter</h6>
+                    <p class="footer-text">Professional pest control and cleaning services for residential and commercial properties across Dubai and UAE.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="footer-title mb-3">Services</h6>
+                    <ul class="footer-links">
+                        <li><a href="services#pest-control-services">Pest Control Services</a></li>
+                        <li><a href="services#green-pest-control">Green Pest Control</a></li>
+                        <li><a href="services#residential-pest-control">Residential Pest Control</a></li>
+                        <li><a href="services#commercial-pest-control">Commercial Pest Control</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="footer-title mb-3">Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="index">Home</a></li>
+                        <li><a href="about#about-us">About Us</a></li>
+                        <li><a href="services#industries-we-serve">Industries</a></li>
+                        <li><a href="resources#pest-guide">Pest Guide</a></li>
+                        <li><a href="contact#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="footer-title mb-3">Contact Info</h6>
+                    <p class="footer-text">
+                        <i class="fas fa-phone me-2"></i><a href="tel:+971542148006" class="footer-link">+971 54 214 8006</a><br>
+                        <i class="fas fa-envelope me-2"></i><a href="mailto:sales@arbiterpest.com" class="footer-link">sales@arbiterpest.com</a><br>
+                        <i class="fas fa-map-marker-alt me-2"></i><span>Dubai, UAE</span>
+                    </p>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2024 Arbiter Pest Control &amp; Cleaning Services LLC. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-link" href="https://wa.me/971542148006" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quote Modal -->
+    <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="quoteModalLabel">Get Your Free Quote</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="quoteForm" class="quote-form">
+                        <div class="mb-4">
+                            <label for="quoteName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="quoteName" name="name" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="quoteEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="quoteEmail" name="email" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="quotePhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="quotePhone" name="phone" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="quoteService" class="form-label">Service Type</label>
+                            <select class="form-select" id="quoteService" name="service" required>
+                                <option value="">Select a service...</option>
+                                <option value="general">General Pest Control</option>
+                                <option value="rodent">Rodent Control</option>
+                                <option value="termite">Termite Control</option>
+                                <option value="bird">Bird Control</option>
+                                <option value="agricultural">Agricultural Pest Control</option>
+                                <option value="cleaning">Cleaning &amp; Disinfection</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="quoteDetails" class="form-label">Property Details</label>
+                            <textarea class="form-control" id="quoteDetails" name="details" rows="3" placeholder="Describe your property and pest issues..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary-premium w-100">Request Quote</button>
+                    </form>
+                    <div id="quoteMessage" class="mt-4" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
+{% endmacro %}
+
