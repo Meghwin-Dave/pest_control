@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation Bar with Mega Menu -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-premium">
         <div class="container-fluid px-5">
             <a class="navbar-brand fw-bold" href="index">
-                <span class="brand-icon"><i class="fas fa-shield-alt"></i></span>ARBITER
+                <span class="brand-icon"><i class="fas fa-shield-alt"></i></span>ARBITER 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,114 +32,17 @@
                     <li class="nav-item">
                         <a class="nav-link {{ 'active' if active == 'home' else '' }}" href="index">Home</a>
                     </li>
-
-                    <!-- About mega -->
-                    <li class="nav-item has-mega">
-                        <a class="nav-link mega-toggle {{ 'active' if active == 'about' else '' }}" href="about">
-                            About <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-inner">
-                                <div class="mega-column">
-                                    <div class="mega-title">About</div>
-                                    <ul class="mega-list">
-                                        <li><a href="about#about-us"><span>About Us</span></a></li>
-                                        <li><a href="about#certifications"><span>Certifications &amp; Licenses</span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-column">
-                                    <div class="mega-title">Locations</div>
-                                    <ul class="mega-list">
-                                        <li><a href="about#abu-dhabi"><span>Abu Dhabi</span></a></li>
-                                        <li><a href="about#dubai"><span>Dubai</span></a></li>
-                                        <li><a href="about#sharjah"><span>Sharjah</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active == 'about' else '' }}" href="about">About</a>
                     </li>
-
-                    <!-- Services mega -->
-                    <li class="nav-item has-mega">
-                        <a class="nav-link mega-toggle {{ 'active' if active == 'services' else '' }}" href="services">
-                            Services <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-inner">
-                                <div class="mega-column">
-                                    <div class="mega-title">Core Services</div>
-                                    <ul class="mega-list">
-                                        <li><a href="services#pest-control-services"><span>Pest Control Services</span></a></li>
-                                        <li><a href="services#pest-categories"><span>Pest Categories</span></a></li>
-                                        <li><a href="services#specialized-services"><span>Specialized Services</span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-column">
-                                    <div class="mega-title">Treatments &amp; Industries</div>
-                                    <ul class="mega-list">
-                                        <li><a href="services#treatments"><span>Treatments</span></a></li>
-                                        <li><a href="services#industries-we-serve"><span>Industries We Serve</span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-column">
-                                    <div class="mega-title">Highlighted</div>
-                                    <ul class="mega-list">
-                                        <li><a href="services#green-pest-control"><span>Green Pest Control</span></a></li>
-                                        <li><a href="services#consultancy-services"><span>Consultancy Services</span></a></li>
-                                        <li><a href="services#fumigation-services"><span>Fumigation Services</span></a></li>
-                                        <li><a href="services#ship-vessel-pest-control"><span>Ship &amp; Vessel Pest Control</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active == 'services' else '' }}" href="services">Services</a>
                     </li>
-
-                    <!-- Resources mega -->
-                    <li class="nav-item has-mega">
-                        <a class="nav-link mega-toggle {{ 'active' if active == 'resources' else '' }}" href="resources">
-                            Resources <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-inner">
-                                <div class="mega-column">
-                                    <div class="mega-title">Knowledge</div>
-                                    <ul class="mega-list">
-                                        <li><a href="resources#pest-guide"><span>Pest Guide</span></a></li>
-                                        <li><a href="resources#blog"><span>Blog</span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="mega-column">
-                                    <div class="mega-title">Popular Topics</div>
-                                    <ul class="mega-list">
-                                        <li><a href="resources#pest-guide-bed-bugs"><span>Bed Bugs</span></a></li>
-                                        <li><a href="resources#pest-guide-cockroaches"><span>Cockroaches</span></a></li>
-                                        <li><a href="resources#pest-guide-rodents"><span>Rodents</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active == 'resources' else '' }}" href="resources">Resources</a>
                     </li>
-
-                    <!-- Contact mega -->
-                    <li class="nav-item has-mega">
-                        <a class="nav-link mega-toggle {{ 'active' if active == 'contact' else '' }}" href="contact">
-                            Contact <i class="fas fa-chevron-down"></i>
-                        </a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-inner">
-                                <div class="mega-column">
-                                    <div class="mega-title">Get in Touch</div>
-                                    <ul class="mega-list">
-                                        <li><a href="contact#contact"><span>Contact Us</span></a></li>
-                                    </ul>
-                                    <div class="mega-cta">
-                                        <a href="https://portal.example.com" target="_blank" rel="noopener" class="btn-nav-portal">
-                                            <i class="fas fa-arrow-up-right-from-square me-1"></i> Customer Portal
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active == 'contact' else '' }}" href="contact">Contact</a>
                     </li>
                 </ul>
             </div>
